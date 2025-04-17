@@ -1,0 +1,250 @@
+<!-- field-detail.html: Trang UI chi tiết sân bóng với nút Quay lại Trang Chủ -->
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi Tiết Sân Bóng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 font-sans text-gray-800">
+    <!-- Back Button -->
+    <div class="max-w-6xl mx-auto px-4 py-4">
+      <a
+        href="index.html"
+        class="inline-flex items-center text-green-600 hover:text-green-500 font-semibold"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 mr-2"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+        Quay về Trang Chủ
+      </a>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="relative h-64 md:h-96 overflow-hidden">
+      <img
+        id="heroImage"
+        src=""
+        alt="Hero"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+      ></div>
+      <div
+        class="relative z-10 max-w-6xl mx-auto px-4 h-full flex items-end pb-8"
+      >
+        <h1
+          id="fieldTitle"
+          class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-lg"
+        >
+          Sân bóng
+        </h1>
+      </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+      <!-- Info & Booking -->
+      <section
+        class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start animate-fadeIn"
+      >
+        <!-- Image Card -->
+        <div class="col-span-1">
+          <img
+            id="fieldImage"
+            src=""
+            alt="Sân"
+            class="w-full rounded-xl shadow-lg hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        <!-- Details -->
+        <div class="col-span-2 space-y-6">
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <h2 id="fieldName" class="text-3xl font-bold text-green-600 mb-4">
+              Tên sân
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+              <div>
+                <i class="fas fa-ruler-combined"></i>
+                <strong>Kích thước:</strong> <span id="fieldSize"></span>
+              </div>
+              <div>
+                <i class="fas fa-money-bill-wave"></i> <strong>Giá:</strong>
+                <span
+                  id="fieldPrice"
+                  class="text-lg font-semibold text-gray-900"
+                ></span>
+              </div>
+              <div>
+                <i class="fas fa-gift"></i> <strong>Ưu đãi:</strong>
+                <span id="fieldDiscount"></span>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mt-6 mb-2">Tính năng nổi bật</h3>
+            <ul
+              id="fieldFeatures"
+              class="grid grid-cols-1 sm:grid-cols-2 gap-2 list-inside list-disc text-gray-700"
+            ></ul>
+          </div>
+          <!-- CTA Booking -->
+          <div
+            class="bg-green-600 p-6 rounded-xl text-center shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <p class="text-white text-lg mb-4">
+              Sẵn sàng trải nghiệm? Đặt sân ngay!
+            </p>
+            <a
+              href="index.html#booking"
+              class="inline-block bg-white text-green-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition"
+              >Đặt Ngay</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Map & Gallery -->
+      <section
+        class="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-fadeIn delay-200"
+      >
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-semibold mb-4">Vị Trí Sân</h3>
+          <div class="w-full h-64 rounded-lg overflow-hidden">
+            <!-- Google Maps Embed -->
+            <iframe
+              class="w-full h-full"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!..."
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-semibold mb-4">Thư Viện Ảnh</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <img
+              src="https://images.stockcake.com/public/2/a/f/2af7f85b-5f57-4f76-83dc-75e58a7e3e7e_large/intense-soccer-play-stockcake.jpg"
+              alt=""
+              class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition-opacity"
+            />
+            <img
+              src="https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              alt=""
+              class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition-opacity"
+            />
+            <img
+              src="https://pos.nvncdn.com/b0b717-26181/art/artCT/20240812_nXBF9i5e.jpg"
+              alt=""
+              class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition-opacity"
+            />
+            <img
+              src="https://cdn.printnetwork.com/production/assets/themes/5966561450122033bd4456f8/imageLocker/5f175ecbe41d5c65b28737ba/blog/blog-description/1647901378358_soccer_banners.jpeg"
+              alt=""
+              class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition-opacity"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <p>&copy; 2025 Hiền Hòa FC. Bảo lưu mọi quyền.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      const data = {
+        5: {
+          title: "Sân 5 Người",
+          hero: "https://t3.ftcdn.net/jpg/00/78/12/16/360_F_78121633_GZRgzDMeMLD6dgDk1KwDtu6Du0qwUarb.jpg",
+          image:
+            "https://www.sanbongro.com.vn/uploads/supply/2019/01/07/thi_cong_san_bong_da_mini_5_nguoi_tiet_kiem.jpg",
+          size: "30m x 15m",
+          price: "150.000 VNĐ/giờ",
+          discount: "Giảm 10% khi đặt trước",
+          features: [
+            "Cỏ nhân tạo cao cấp",
+            "Chiếu sáng LED toàn sân",
+            "Phù hợp 5vs5 với rào bảo vệ",
+          ],
+        },
+        7: {
+          title: "Sân 7 Người",
+          hero: "https://t4.ftcdn.net/jpg/03/05/55/69/360_F_305556926_2QKGFHJ0AmtNsexJPjOgXVOOSUpy8g60.jpg",
+          image:
+            "https://sonsanepoxy.vn/wp-content/uploads/2023/08/kich-thuoc-san-bong-da-1.jpg",
+          size: "40m x 20m",
+          price: "200.000 VNĐ/giờ",
+          discount: "Giảm 5% cho nhóm trên 10 người",
+          features: [
+            "Cỏ tiêu chuẩn thi đấu",
+            "Hàng rào bảo vệ xung quanh",
+            "Ánh sáng LED hiện đại",
+          ],
+        },
+        10: {
+          title: "Sân 10 Người",
+          hero: "https://cdn.printnetwork.com/production/assets/themes/5966561450122033bd4456f8/imageLocker/5f175ecbe41d5c65b28737ba/blog/blog-description/1647901378358_soccer_banners.jpeg",
+          image:
+            "https://bizweb.dktcdn.net/100/017/070/files/kich-thuoc-san-bong-da-1-jpeg.jpg?v=1671246300021",
+          size: "60m x 30m",
+          price: "250.000 VNĐ/giờ",
+          discount: "Giảm 15% buổi khuya",
+          features: [
+            "Cỏ cao cấp chuyên nghiệp",
+            "Thiết kế rộng rãi",
+            "Phù hợp 10vs10, tổ chức sự kiện",
+          ],
+        },
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const type = params.get("type") || "5";
+      const info = data[type];
+
+      document.getElementById("heroImage").src = info.hero;
+      document.getElementById("fieldTitle").textContent = info.title;
+      document.getElementById("fieldName").textContent = info.title;
+      document.getElementById("fieldImage").src = info.image;
+      document.getElementById("fieldSize").textContent = info.size;
+      document.getElementById("fieldPrice").textContent = info.price;
+      document.getElementById("fieldDiscount").textContent = info.discount;
+      const ul = document.getElementById("fieldFeatures");
+      ul.innerHTML = info.features.map((f) => `<li>${f}</li>`).join("");
+    </script>
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+    </style>
+  </body>
+</html>
