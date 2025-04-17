@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sân Bóng Hiền Hòa</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container-custom">
+        <h1>Sân Bóng Hiền Hòa ⚽</h1>
+        <nav class="nav">
+          <a href="#home"><i class="fas fa-home"></i> Trang chủ</a>
+          <a href="#about"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+          <a href="#pricing"><i class="fas fa-tag"></i> Bảng giá</a>
+          <a href="#booking"><i class="fas fa-calendar-check"></i> Đặt sân</a>
+          <a href="#gallery"><i class="fas fa-images"></i> Thư viện</a>
+          <a href="#reviews"><i class="fas fa-star"></i> Đánh giá</a>
+          <a href="#contact"><i class="fas fa-phone-alt"></i> Liên hệ</a>
+        </nav>
+      </div>
+    </header>
+
+    <section
+      id="hero-slider"
+      class="relative h-72 md:h-96 overflow-hidden rounded-lg"
+      style="max-width: 1100px; margin: auto; margin-top: 1rem !important"
+    >
+      <!-- Danh sách slide -->
+      <div
+        class="slides-container h-full w-full flex transition-transform duration-500 ease-in-out"
+      >
+        <!-- Slide 1 -->
+        <div class="slide relative min-w-full h-full">
+          <img
+            src="https://t3.ftcdn.net/jpg/00/78/12/16/360_F_78121633_GZRgzDMeMLD6dgDk1KwDtu6Du0qwUarb.jpg"
+            alt="Sân bóng đá ban đêm"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+          >
+            <div class="text-center text-white px-4">
+              <h2 class="text-3xl md:text-5xl font-extrabold mb-2">
+                Chào mừng đến với Sân bóng hiện đại
+              </h2>
+              <p class="text-md md:text-lg">
+                Trải nghiệm trận cầu đỉnh cao mỗi ngày
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide relative min-w-full h-full">
+          <img
+            src="https://t4.ftcdn.net/jpg/03/05/55/69/360_F_305556926_2QKGFHJ0AmtNsexJPjOgXVOOSUpy8g60.jpg"
+            alt="Trận đấu sôi động"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+          >
+            <div class="text-center text-white px-4">
+              <h2 class="text-3xl md:text-5xl font-extrabold mb-2">
+                Sôi động cùng giải đấu mỗi tuần
+              </h2>
+              <p class="text-md md:text-lg">
+                Tổ chức và tham gia các giải bóng đá hấp dẫn
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide relative min-w-full h-full">
+          <img
+            src="https://cdn.printnetwork.com/production/assets/themes/5966561450122033bd4456f8/imageLocker/5f175ecbe41d5c65b28737ba/blog/blog-description/1647901378358_soccer_banners.jpeg"
+            alt="Cộng đồng bóng đá"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+          >
+            <div class="text-center text-white px-4">
+              <h2 class="text-3xl md:text-5xl font-extrabold mb-2">
+                Kết nối đam mê bóng đá
+              </h2>
+              <p class="text-md md:text-lg">
+                Tham gia cộng đồng và giao lưu cùng người yêu bóng đá
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <button
+        class="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-3xl hover:text-blue-300 transition"
+        id="prev-slide"
+      >
+        ❮
+      </button>
+      <button
+        class="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-3xl hover:text-blue-300 transition"
+        id="next-slide"
+      >
+        ❯
+      </button>
+
+      <!-- Pagination dots -->
+      <div
+        class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
+      >
+        <div class="dot w-3 h-3 rounded-full bg-white cursor-pointer"></div>
+        <div class="dot w-3 h-3 rounded-full bg-white cursor-pointer"></div>
+        <div class="dot w-3 h-3 rounded-full bg-white cursor-pointer"></div>
+      </div>
+    </section>
+
+    <main class="container-custom">
+      <section
+        id="about"
+        class="bg-white shadow-lg rounded-lg p-6 md:p-10 mx-auto my-10"
+      >
+        <h2
+          class="text-3xl md:text-4xl font-bold text-green-600 mb-4 text-center"
+        >
+          Giới Thiệu Về Sân Bóng
+        </h2>
+        <p class="text-gray-700 text-lg leading-relaxed text-justify">
+          Chúng tôi tự hào là đơn vị cung cấp sân bóng đá nhân tạo chất lượng
+          cao, đáp ứng đầy đủ tiêu chuẩn thi đấu và luyện tập. Với mặt sân được
+          đầu tư bài bản, hệ thống chiếu sáng hiện đại và không gian rộng rãi,
+          chúng tôi mang đến trải nghiệm chơi bóng tuyệt vời cho mọi lứa tuổi.
+        </p>
+        <ul class="list-disc list-inside text-gray-700 text-lg mt-4 space-y-2">
+          <li>Mặt sân cỏ nhân tạo mềm mại, độ nảy chuẩn</li>
+          <li>Đội ngũ nhân viên thân thiện, hỗ trợ tận tình</li>
+          <li>Hệ thống đặt sân trực tuyến tiện lợi, nhanh chóng</li>
+          <li>Phòng thay đồ sạch sẽ, có tủ gửi đồ riêng</li>
+          <li>Có khu vực nghỉ ngơi, nước uống và bãi đỗ xe miễn phí</li>
+        </ul>
+        <p class="text-gray-700 text-lg mt-4 leading-relaxed text-justify">
+          Dù bạn là người chơi phong trào hay đang tìm kiếm một sân đấu chuyên
+          nghiệp cho đội nhóm, chúng tôi luôn sẵn sàng phục vụ với chất lượng và
+          tinh thần thể thao cao nhất.
+        </p>
+      </section>
+
+      <section
+        id="pricing"
+        class="bg-white shadow-lg rounded-lg p-6 md:p-10 mx-auto my-10"
+      >
+        <h2
+          class="text-3xl md:text-4xl font-bold text-blue-600 mb-6 text-center"
+        >
+          Bảng Giá Thuê Sân
+        </h2>
+        <div class="overflow-x-auto">
+          <table
+            class="min-w-full table-auto border border-gray-200 rounded-lg"
+          >
+            <thead>
+              <tr class="bg-blue-100 text-blue-800 text-lg">
+                <th class="px-4 py-3 border-b border-gray-200 text-left">
+                  Khung giờ
+                </th>
+                <th class="px-4 py-3 border-b border-gray-200 text-left">
+                  Giá (VNĐ/giờ)
+                </th>
+                <th class="px-4 py-3 border-b border-gray-200 text-left">
+                  Ưu đãi
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700 text-md">
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3 border-b">6:00 - 12:00</td>
+                <td class="px-4 py-3 border-b">150,000</td>
+                <td class="px-4 py-3 border-b">Giảm 10% cho đặt trước</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3 border-b">12:00 - 18:00</td>
+                <td class="px-4 py-3 border-b">200,000</td>
+                <td class="px-4 py-3 border-b">Giảm 5% nhóm trên 10 người</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3 border-b">18:00 - 22:00</td>
+                <td class="px-4 py-3 border-b">250,000</td>
+                <td class="px-4 py-3 border-b">Giảm 15% buổi khuya</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-sm text-gray-500 mt-4 text-center">
+          * Giá có thể thay đổi theo ngày lễ và cuối tuần. Vui lòng liên hệ để
+          được báo giá chính xác nhất.
+        </p>
+      </section>
+
+      <section
+        id="booking"
+        class="bg-white shadow-lg rounded-lg p-6 md:p-10 mx-auto my-10"
+      >
+        <h2
+          class="text-3xl md:text-4xl font-bold text-green-600 mb-6 text-center"
+        >
+          Đặt Sân Ngay
+        </h2>
+        <form id="bookingForm" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-gray-700 font-medium mb-2">Ngày</label>
+              <input
+                type="date"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 font-medium mb-2">Giờ</label>
+              <input
+                type="time"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+            </div>
+          </div>
+          <div class="text-center">
+            <button
+              type="submit"
+              class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300"
+            >
+              Đặt Ngay
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section
+        id="gallery"
+        class="bg-white shadow-lg rounded-lg p-6 md:p-10 mx-auto my-10"
+      >
+        <h2
+          class="text-3xl md:text-4xl font-bold text-green-600 mb-8 text-center"
+        >
+          Thư Viện Ảnh
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div
+            class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <img
+              src="https://images.stockcake.com/public/2/a/f/2af7f85b-5f57-4f76-83dc-75e58a7e3e7e_large/intense-soccer-play-stockcake.jpg"
+              alt="Sân ban ngày"
+              class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <img
+              src="https://media.istockphoto.com/id/1610631888/photo/kid-playing-soccer-in-local-park.jpg?s=612x612&w=0&k=20&c=z9uQNCEJE4E-l52r9hud0Cn_-vgGXamHP0JKoFhT9yQ="
+              alt="Sân buổi tối"
+              class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div
+            class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <img
+              src="https://kaptivasportsacademy.com/wp-content/uploads/2018/05/reasons-to-play-soccer.jpeg"
+              alt="Khu vực khán giả"
+              class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="reviews"
+        class="bg-white shadow-lg rounded-lg p-6 md:p-10 mx-auto my-10"
+      >
+        <h2
+          class="text-3xl md:text-4xl font-bold text-green-600 mb-8 text-center"
+        >
+          Đánh Giá Khách Hàng
+        </h2>
+        <!-- FORM THÊM ĐÁNH GIÁ MỚI -->
+        <form id="newReviewForm" class="space-y-4 mb-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              type="text"
+              id="reviewerName"
+              placeholder="Tên của bạn"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+            />
+            <select
+              id="reviewRating"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+            >
+              <option value="" disabled selected>Chọn sao</option>
+              <option value="★★★★★">5 sao</option>
+              <option value="★★★★☆">4 sao</option>
+              <option value="★★★☆☆">3 sao</option>
+              <option value="★★☆☆☆">2 sao</option>
+              <option value="★☆☆☆☆">1 sao</option>
+            </select>
+          </div>
+          <textarea
+            id="reviewText"
+            rows="3"
+            placeholder="Viết nhận xét của bạn…"
+            required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+          ></textarea>
+          <button
+            type="submit"
+            class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg"
+          >
+            Gửi đánh giá
+          </button>
+        </form>
+
+        <div
+          id="reviewsContainer"
+          class="grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          <!-- Review 1 -->
+          <div
+            class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <p class="text-lg font-semibold text-gray-800 mb-2">Nguyễn Văn A</p>
+            <p class="text-yellow-400 text-xl mb-2">★★★★★</p>
+            <p class="text-gray-700">Dịch vụ tuyệt vời, sân chất lượng cao.</p>
+          </div>
+
+          <!-- Review 2 -->
+          <div
+            class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <p class="text-lg font-semibold text-gray-800 mb-2">Trần Thị B</p>
+            <p class="text-yellow-400 text-xl mb-2">★★★★☆</p>
+            <p class="text-gray-700">
+              Giá tốt, đặt sân nhanh. Chỉ cần mở rộng chỗ gửi xe.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        class="bg-white shadow-lg rounded-lg p-6 md:p-10 mx-auto my-10"
+      >
+        <h2
+          class="text-3xl md:text-4xl font-bold text-green-600 mb-6 text-center"
+        >
+          Liên Hệ
+        </h2>
+
+        <div class="text-gray-700 mb-8 space-y-2 text-center">
+          <p><strong>Địa chỉ:</strong> 123 Đường A, Quận B, TP.HCM</p>
+          <p>
+            <strong>Điện thoại:</strong>
+            <a href="tel:+84901234567" class="text-blue-600 hover:underline"
+              >090 123 4567</a
+            >
+          </p>
+          <p>
+            <strong>Email:</strong>
+            <a
+              href="mailto:info@sanhbonghienhoa.com"
+              class="text-blue-600 hover:underline"
+            >
+              info@sanhbonghienhoa.com
+            </a>
+          </p>
+        </div>
+
+        <form id="contactForm" class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium mb-1">Tên</label>
+            <input
+              type="text"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Email</label>
+            <input
+              type="email"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Lời nhắn</label>
+            <textarea
+              rows="4"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors"
+          >
+            Gửi
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+      <div
+        class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0"
+      >
+        <p class="text-sm text-center md:text-left">
+          &copy; 2025
+          <span class="font-semibold text-green-400">Sân Bóng Hiền Hòa</span>.
+          Bảo lưu mọi quyền.
+        </p>
+
+        <div class="space-x-4 text-sm">
+          <a href="#home" class="hover:text-green-400 transition-colors"
+            >Trang chủ</a
+          >
+          <span class="text-gray-500">|</span>
+          <a href="#about" class="hover:text-green-400 transition-colors"
+            >Giới thiệu</a
+          >
+          <span class="text-gray-500">|</span>
+          <a href="#contact" class="hover:text-green-400 transition-colors"
+            >Liên hệ</a
+          >
+        </div>
+
+        <div class="flex space-x-4 text-lg">
+          <a href="#" class="hover:text-green-400 transition-colors"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="#" class="hover:text-green-400 transition-colors"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" class="hover:text-green-400 transition-colors"
+            ><i class="fab fa-twitter"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const cards = document.querySelectorAll(".card");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = 1;
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      cards.forEach((card) => {
+        card.style.opacity = 0;
+        card.style.transform = "translateY(20px)";
+        card.style.transition = "all 0.6s ease-out";
+        observer.observe(card);
+      });
+    </script>
+
+    <script>
+      // Xử lý slider
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".dot");
+      const slider = document.querySelector(".slides-container");
+
+      function showSlide(n) {
+        slides.forEach((slide, index) => {
+          slide.classList.toggle("active", index === n);
+        });
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("bg-blue-500", index === n);
+          dot.classList.toggle("bg-white", index !== n);
+        });
+
+        slider.style.transform = `translateX(-${n * 100}%)`;
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      // Tự động chuyển slide mỗi 5s
+      let autoSlide = setInterval(nextSlide, 5000);
+
+      // Thêm sự kiện click cho nút
+      document.getElementById("next-slide").addEventListener("click", () => {
+        clearInterval(autoSlide);
+        nextSlide();
+        autoSlide = setInterval(nextSlide, 5000);
+      });
+
+      document.getElementById("prev-slide").addEventListener("click", () => {
+        clearInterval(autoSlide);
+        prevSlide();
+        autoSlide = setInterval(nextSlide, 5000);
+      });
+
+      // Thêm sự kiện click cho dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          clearInterval(autoSlide);
+          currentSlide = index;
+          showSlide(currentSlide);
+          autoSlide = setInterval(nextSlide, 5000);
+        });
+      });
+
+      // Khởi tạo slide đầu tiên
+      showSlide(0);
+    </script>
+
+    <script>
+      document
+        .getElementById("newReviewForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Lấy giá trị từ form
+          const name = document.getElementById("reviewerName").value.trim();
+          const rating = document.getElementById("reviewRating").value;
+          const text = document.getElementById("reviewText").value.trim();
+
+          // Tạo thẻ div mới cho review
+          const reviewDiv = document.createElement("div");
+          reviewDiv.className =
+            "bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300";
+
+          // Lấp HTML cho review
+          reviewDiv.innerHTML = `
+        <p class="text-lg font-semibold text-gray-800 mb-2">${name}</p>
+        <p class="text-yellow-400 text-xl mb-2">${rating}</p>
+        <p class="text-gray-700">${text}</p>
+      `;
+
+          // Thêm vào đầu container
+          const container = document.getElementById("reviewsContainer");
+          container.prepend(reviewDiv);
+
+          // Reset form
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
