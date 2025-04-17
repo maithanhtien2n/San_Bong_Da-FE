@@ -233,6 +233,142 @@
         </p>
       </section>
 
+      <!-- Thêm UI Báo Cáo Thống Kê -->
+      <div class="mt-10 bg-white rounded-lg shadow-lg p-6 md:p-8">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+          Báo Cáo Thống Kê Doanh Thu & Lượt Đặt Sân
+        </h3>
+        <div
+          class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4"
+        >
+          <!-- Chọn loại báo cáo -->
+          <div class="flex items-center space-x-2">
+            <label for="reportType" class="font-medium text-gray-700"
+              >Xem theo:</label
+            >
+            <select
+              id="reportType"
+              class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+              <option value="day">Ngày</option>
+              <option value="month">Tháng</option>
+            </select>
+          </div>
+
+          <!-- Chọn ngày / tháng -->
+          <div id="datePickerContainer" class="flex items-center space-x-2">
+            <label for="reportDate" class="font-medium text-gray-700"
+              >Chọn:</label
+            >
+            <input
+              type="date"
+              id="reportDate"
+              class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+            <input
+              type="month"
+              id="reportMonth"
+              class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 hidden"
+            />
+          </div>
+
+          <!-- Nút xem báo cáo -->
+          <button
+            id="viewReport"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition"
+          >
+            Xem
+          </button>
+        </div>
+
+        <!-- Kết quả báo cáo -->
+        <div
+          id="reportResult"
+          class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          <div class="bg-gray-50 p-4 rounded-lg shadow-inner">
+            <p class="text-gray-600">Tổng Doanh Thu:</p>
+            <p id="totalRevenue" class="text-3xl font-bold text-green-600">
+              0 VNĐ
+            </p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow-inner">
+            <p class="text-gray-600">Số Lượt Đặt Sân:</p>
+            <p id="totalBookings" class="text-3xl font-bold text-blue-600">
+              0 lượt
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Improved Payment Modal -->
+      <div
+        id="paymentModal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm"
+        style="
+          z-index: 9999999999999999999;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <div
+          class="bg-white rounded-2xl shadow-2xl w-11/12 max-w-lg p-8 relative"
+        >
+          <!-- Close Button -->
+          <button
+            id="closeModal"
+            class="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
+          >
+            <i class="fas fa-times text-xl"></i>
+          </button>
+
+          <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+            Chọn phương thức thanh toán
+          </h3>
+
+          <!-- Payment Options -->
+          <div id="paymentOptions" class="grid grid-cols-1 gap-4">
+            <button
+              data-method="cod"
+              class="payment-option flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:shadow-lg transition"
+            >
+              <i class="fas fa-money-bill-wave text-2xl text-green-500"></i>
+              <span class="text-lg font-medium">Trực tiếp tại quán</span>
+            </button>
+
+            <button
+              data-method="bank"
+              class="payment-option flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:shadow-lg transition"
+            >
+              <i class="fas fa-university text-2xl text-blue-500"></i>
+              <span class="text-lg font-medium">Chuyển khoản</span>
+            </button>
+
+            <button
+              data-method="online"
+              class="payment-option flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:shadow-lg transition"
+            >
+              <i class="fas fa-wallet text-2xl text-purple-500"></i>
+              <span class="text-lg font-medium"
+                >Thanh toán online (VNPay, Momo...)</span
+              >
+            </button>
+          </div>
+
+          <!-- Confirm Button -->
+          <div class="mt-6 text-center">
+            <button
+              id="confirmPaymentBtn"
+              disabled
+              class="bg-gray-300 cursor-not-allowed text-white font-semibold px-6 py-2 rounded-lg"
+            >
+              Xác nhận
+            </button>
+          </div>
+        </div>
+      </div>
+
       <section
         id="booking"
         class="bg-white shadow-lg rounded-lg p-6 md:p-10 mx-auto my-10"
@@ -641,6 +777,198 @@
           // Reset form
           this.reset();
         });
+    </script>
+
+    <script>
+      // Lấy tham chiếu đến các input và select
+      const typeSelect = document.getElementById("reportType");
+      const dateInput = document.getElementById("reportDate");
+      const monthInput = document.getElementById("reportMonth");
+      const totalRevenueEl = document.getElementById("totalRevenue");
+      const totalBookingsEl = document.getElementById("totalBookings");
+
+      // Khởi tạo giá trị mặc định cho date và month
+      const now = new Date();
+      dateInput.value = now.toISOString().split("T")[0]; // YYYY-MM-DD
+      monthInput.value = now.toISOString().slice(0, 7); // YYYY-MM
+
+      // Hàm sinh và hiển thị báo cáo
+      function generateReport() {
+        const type = typeSelect.value;
+        const label = type === "day" ? dateInput.value : monthInput.value;
+
+        // Sinh dữ liệu ảo
+        const fakeRevenue = Math.floor(Math.random() * 1_500_001) + 500_000;
+        const fakeBookings = Math.floor(Math.random() * 46) + 5;
+
+        // Hiển thị lên UI
+        totalRevenueEl.textContent =
+          fakeRevenue.toLocaleString("vi-VN") + " VNĐ";
+        totalBookingsEl.textContent = fakeBookings + " lượt";
+        console.log(`Báo cáo theo ${type}: ${label}`);
+      }
+
+      // Toggle hiển thị date/month picker
+      typeSelect.addEventListener("change", () => {
+        if (typeSelect.value === "day") {
+          dateInput.classList.remove("hidden");
+          monthInput.classList.add("hidden");
+        } else {
+          monthInput.classList.remove("hidden");
+          dateInput.classList.add("hidden");
+        }
+        // Cập nhật lại báo cáo mỗi khi user đổi loại xem
+        generateReport();
+      });
+
+      // Khi bấm nút “Xem”
+      document.getElementById("viewReport").addEventListener("click", () => {
+        if (!(dateInput.value || monthInput.value)) {
+          alert("Vui lòng chọn ngày hoặc tháng trước khi xem báo cáo.");
+          return;
+        }
+        generateReport();
+      });
+
+      // -------- GỌI NGAY KHI TRANG LOAD --------
+      window.addEventListener("DOMContentLoaded", () => {
+        // Ẩn/hiện đúng ô date/month theo mặc định
+        if (typeSelect.value === "day") {
+          dateInput.classList.remove("hidden");
+          monthInput.classList.add("hidden");
+        } else {
+          monthInput.classList.remove("hidden");
+          dateInput.classList.add("hidden");
+        }
+        // Sinh báo cáo ngay
+        generateReport();
+      });
+    </script>
+
+    <!-- JavaScript for Modal Behavior -->
+    <script>
+      const bookingForm = document.getElementById("bookingForm");
+      const paymentModal = document.getElementById("paymentModal");
+      const closeModalBtn = document.getElementById("closeModal");
+      const paymentOptions = document.querySelectorAll(".payment-option");
+      const confirmBtn = document.getElementById("confirmPaymentBtn");
+      let selectedMethod = null;
+
+      // Open modal on form submit
+      bookingForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        paymentModal.classList.remove("hidden");
+      });
+
+      // Close modal
+      closeModalBtn.addEventListener("click", () => {
+        paymentModal.classList.add("hidden");
+      });
+
+      // Select payment option
+      paymentOptions.forEach((opt) => {
+        opt.addEventListener("click", () => {
+          paymentOptions.forEach((btn) =>
+            btn.classList.remove("border-green-500")
+          );
+          opt.classList.add("border-green-500");
+          selectedMethod = opt.dataset.method;
+          confirmBtn.disabled = false;
+          confirmBtn.classList.remove("bg-gray-300", "cursor-not-allowed");
+          confirmBtn.classList.add(
+            "bg-green-600",
+            "hover:bg-green-700",
+            "cursor-pointer"
+          );
+        });
+      });
+
+      // Confirm payment and proceed
+      confirmBtn.addEventListener("click", () => {
+        if (!selectedMethod) return;
+
+        // Hiện toast thành công
+        showToast(
+          `Đặt sân thành công với phương thức: ${
+            selectedMethod === "cod"
+              ? "Trực tiếp tại quán"
+              : selectedMethod === "bank"
+              ? "Chuyển khoản"
+              : "Thanh toán online"
+          }`
+        );
+
+        // Ẩn modal
+        paymentModal.classList.add("hidden");
+
+        // Reset form
+        bookingForm.reset();
+
+        // Reset trạng thái nút xác nhận
+        confirmBtn.disabled = true;
+        confirmBtn.classList.remove(
+          "bg-green-600",
+          "hover:bg-green-700",
+          "cursor-pointer"
+        );
+        confirmBtn.classList.add("bg-gray-300", "cursor-not-allowed");
+
+        // Reset chọn phương thức
+        paymentOptions.forEach((btn) =>
+          btn.classList.remove("border-green-500")
+        );
+        selectedMethod = null;
+
+        // TODO: Gửi dữ liệu đặt sân + thanh toán lên server
+      });
+    </script>
+
+    <style>
+      #toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #38a169;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        display: none;
+        z-index: 9999;
+        animation: fadeInOut 3s ease forwards;
+      }
+
+      @keyframes fadeInOut {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        10% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        90% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+      }
+    </style>
+
+    <div id="toast"></div>
+
+    <script>
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.style.display = "block";
+        setTimeout(() => {
+          toast.style.display = "none";
+        }, 3000);
+      }
     </script>
   </body>
 </html>
